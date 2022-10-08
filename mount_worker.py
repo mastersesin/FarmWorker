@@ -78,10 +78,6 @@ def controller(root_folder_id, rclone_token, client_id, client_secret):
 
         print('Start mounting remote')
         threading.Thread(target=mount_drive, args=(root_folder_id,)).start()
-        print(f'Start mounting done with process id: {mount_process_id}')
 
         while True:
             time.sleep(1)
-
-        print('Sleep done start kill remote and start over again with new credential')
-        os.kill(mount_process_id, signal.SIGKILL)

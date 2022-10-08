@@ -9,8 +9,10 @@ from mount_worker import controller
 MAX_FOLDER_PER_DOCKER = 3
 TELEGRAM_API_TOKEN = '1989791535:AAFFS4efdml_WehN6LwBXSnxRqtPbRG5X7Y'
 TELEGRAM_CHANNEL_ID = -584319866
-WORKER_ID = os.environ["WORKER_ID"]
-ENDPOINT = 'http://35.223.167.23:5000/'
+# WORKER_ID = os.environ["WORKER_ID"]
+WORKER_ID = "123"
+# ENDPOINT = 'http://35.223.167.23:5000/'
+ENDPOINT = 'http://localhost:8000/'
 bot = telegram.Bot(token=TELEGRAM_API_TOKEN)
 
 

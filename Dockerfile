@@ -4,7 +4,7 @@ WORKDIR /code
 # Install application into container
 COPY . .
 
-RUN apt-get update && apt-get install git lsb-release sudo curl -y
+RUN apt-get update && apt-get install git lsb-release sudo curl fuse -y
 
 RUN pip install -r requirements.txt
 
