@@ -1,0 +1,4 @@
+python-telegram-bot
+websockets~=10.3
+fastapi~=0.85.0
+telegram~=0.0.1

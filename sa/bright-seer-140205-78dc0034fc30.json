@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "bright-seer-140205",
+  "private_key_id": "78dc0034fc305c889c9637e4291e8a45c4617ee5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDZh/88ChPhgH6X\nknoC4q/JESNmccaz6/n3QLgAQ7Mzdwu6vmZn0eAcc1w1zCycYAF63DkMqvZWdMDd\nh5fQ+2D90kR9Cc711ELd6LlcgNVGZZrF4IvZlGKCHu4Wguvoch5YWmB9bhZ+TVdx\njdQzGpr3llcQymG7QUKrLmG5zipV2AyBwh8x37O+ZwWYYryzA093UTU0ysKIxJY6\n/3gso1ReLyKjlzt5TACSWHH96LQN8df16R+mfgto43dWrQtOXQtiJYx6oojAeWhF\nk9aF410g9BuYQ022QeNG1/y7sjN6rcgYwQz1g7aLTZUDVdmdaIRKsFP8FVJNuBrR\nWYkG3UnBAgMBAAECggEAF751+CY7dE5TwxSsd7spp99Uh16c60+zKa9pRjIdkd0J\nLTmSMPviJAjdhEvEhM8f6jq2iXDx0Y8N7EBcLGX7+MimTCWxbvjb0aAQ941iejwl\n8Dpp2XaOaBibMV7aBDXMpSU8SgSltOSZSl5KTse1KZhB6aXFlCxz6/50kVT1Hwhx\n626rjhEyqixTfX+xhEsgfka68WJDgMAGt9fBFY+vYle5SJSeYXykEEcsDXq2aCf2\nil7UQSdiAD67ANoPBHtDWA/kw9clmuJi7q1LJO8IAsz3SILx+Cl7H07QZGHpqu+n\n/5LNBL75BaYhEotIvOLiFsp1gk60JLBpTGNz7p6AyQKBgQD/aNdJwKmWKdJxlbqJ\nK/Y58GkkBFbdLoEXXxfl4lYeEvvSNNy4EP10yWIx6Iqof5jwxuWRrf6fk/EVIcWE\nkllaHbhg70RoGPYB7ysk+5M+gje+hn99HCeB0O1tBKFO+KFww0TPib2CwE0y1j9G\nsVRexNsaEyat9w7er9Aq8IWF5QKBgQDaCL0QJEv5EJBLukEHGU5d2vYfm3KO1npp\nTV4Ck9n7HpanSza68dD8lmeg6rM9SU0xm6YlmXYX3yfXDBZkxXzj6WT/wEN360aR\np7C4eYpmcy8qCdR5Z2UllEQAxq0LxXoDAyW460zkzrMznIh0dizXG6Jc1AHcdLO4\niFxRip22rQKBgQC0jHBj+oXnWPkiwi1y+li87G3mwAqHoHAxDU/fefhWmiTZm/TL\nSXdiL1ny3efm5QxAaNmv+cedFv+9aHowFSSEx62nGHzK+ZouE9vz8MNN1M+DJ6DH\n2Dc1VXQBNNyy7p9xDxh9fWkyHK512W4xkvmJZK9d51vYbmVclfwZ3p0E4QKBgFMj\njeQ/0vBwDnWx2eX5ElbbjYpT3gT1Z8wLglN9SVtmOJAmMAJs/wGx4GYN2Lb/4n2O\nGnav48YKg8iOhWN7ornNX4PeLlvlzQzxYoOVZN7YAR4IjYqVkI4Z0Sxylb2tWW8Y\nniO7JaEB6Hc/sxCll0eW8/xtoyALKBSvenRlZOopAoGAQWSfR2HKhZPkBsZkbgGm\n7v1TmGVU2qgf7cZpeq9okDiG89FPVKI08OWQDHyBrDPsBQXUejJkrjV7ZJycsDGK\n6WQ7NhrFBv0FgmXBawPv9UhRjHUlDpMeTCMx41facX3nI970TqYpMqJoByv3a9Kq\nJ+GEHtofYnRM/SpUDrHI7mI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "docker-logging@bright-seer-140205.iam.gserviceaccount.com",
+  "client_id": "107955105279497918733",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/docker-logging%40bright-seer-140205.iam.gserviceaccount.com"
+}
