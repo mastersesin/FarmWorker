@@ -78,6 +78,3 @@ def controller(root_folder_id, rclone_token, client_id, client_secret):
 
         print('Start mounting remote')
         threading.Thread(target=mount_drive, args=(root_folder_id,)).start()
-
-        while True:
-            time.sleep(1)
