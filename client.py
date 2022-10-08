@@ -51,7 +51,9 @@ while True:
                             json.loads(ask_rclone_token_obj["client_id"]),
                             json.loads(ask_rclone_token_obj["client_secret"])
                         )
+                        print("Added controller")
                         add_chia_folder(ask_folder_id_obj["folder_id"])
+                        print("Added chia folder")
 
                 else:
                     send_telegram_message("Folder is more than Rclone")
