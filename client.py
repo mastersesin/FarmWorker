@@ -54,6 +54,7 @@ while True:
                         print("Added controller")
                         add_chia_folder(ask_folder_id_obj["folder_id"])
                         print("Added chia folder")
+                        current_running_folder += 1
 
                 else:
                     send_telegram_message("Folder is more than Rclone")
