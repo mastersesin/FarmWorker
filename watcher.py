@@ -25,8 +25,7 @@ def run(process, obj):
                 )
             if 'harvester chia.harvester.harvester: INFO' in data or 'harvester chia.plotting.plot_tools: INFO' in data:
                 last_event_time = int(time.time())
-                print(data)
-            print(data)
+                print(data.strip())
         time.sleep(0.01)
 
 
@@ -37,7 +36,7 @@ def run_rclone(process, obj):
             os.abort()
         if process.poll(1):
             data = obj.stdout.readline().decode()
-            print(data)
+            print(data.strip())
         time.sleep(0.01)
 
 
