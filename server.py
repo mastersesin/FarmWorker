@@ -94,17 +94,17 @@ def add_new_worker(db: Session, folder_id: str, rclone_id: str, worker_id: str):
 @app.get("/folder")
 def read_folders(db: Session = Depends(get_db), is_filter: Optional[bool] = False):
     if is_filter:
-        return check_data_unused_folder(db=db)
+        return {"status": True, "message": check_data_unused_folder(db=db)}
     else:
-        return get_all_folder(db=db)
+        return {"status": True, "message": get_all_folder(db=db)}
 
 
 @app.get("/token")
 def read_tokens(db: Session = Depends(get_db), is_filter: Optional[bool] = False):
     if is_filter:
-        return check_data_unused_token(db=db)
+        return {"status": True, "message": check_data_unused_token(db=db)}
     else:
-        return get_all_token(db=db)
+        return {"status": True, "message": get_all_token(db=db)}
 
 
 @app.get("/worker")
@@ -133,9 +133,9 @@ def create_token(rclone_token: str, client_id: str, client_secret: str,
 
 
 @app.post("/worker")
-def map_folder_token(rclone_token: str, folder_id: str, worker_id: str, db: Session = Depends(get_db)):
+def map_folder_token(rclone_token_id: str, folder_id: str, worker_id: str, db: Session = Depends(get_db)):
     try:
-        add_f_t = add_new_worker(db=db, folder_id=folder_id, worker_id=worker_id, rclone_id=rclone_token)
+        add_f_t = add_new_worker(db=db, folder_id=folder_id, worker_id=worker_id, rclone_id=rclone_token_id)
         return add_f_t
     except sqlalchemy.exc.IntegrityError as e:
         return {"status": False, "message": e}
