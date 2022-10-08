@@ -3,6 +3,7 @@ import time
 from typing import Optional
 
 import sqlalchemy
+from pydantic import BaseModel
 
 import database
 
@@ -15,6 +16,12 @@ import uuid
 database.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+
+class Item(BaseModel):
+    rclone_token_id: str
+    folder_id: str
+    worker_id: str
 
 
 def get_all_folder(db: Session):
@@ -133,9 +140,9 @@ def create_token(rclone_token: str, client_id: str, client_secret: str,
 
 
 @app.post("/worker")
-def map_folder_token(rclone_token_id: str, folder_id: str, worker_id: str, db: Session = Depends(get_db)):
+def map_folder_token(item: Item, db: Session = Depends(get_db)):
     try:
-        add_f_t = add_new_worker(db=db, folder_id=folder_id, worker_id=worker_id, rclone_id=rclone_token_id)
+        add_f_t = add_new_worker(db=db, folder_id=item.folder_id, worker_id=item.worker_id, rclone_id=item.rclone_token_id)
         return add_f_t
     except sqlalchemy.exc.IntegrityError as e:
         return {"status": False, "message": e}
