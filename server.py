@@ -1,3 +1,4 @@
+import math
 import os
 import time
 from typing import Optional
@@ -24,6 +25,10 @@ class Item(BaseModel):
     worker_id: str
 
 
+class HealthCheck(BaseModel):
+    worker_id: str
+
+
 def get_all_folder(db: Session):
     return db.query(database.Folder).all()
 
@@ -36,7 +41,8 @@ def get_all_worker(db: Session):
     return_list = []
     records = db.query(database.Worker).all()
     for record in records:
-        return_list.append({**record.__dict__, "last_activity": (int(time.time()) - int(record.last_activity)) / 60})
+        return_list.append(
+            {**record.__dict__, "last_activity": math.ceil((int(time.time()) - int(record.last_activity)) / 60)})
     return return_list
 
 
@@ -77,6 +83,14 @@ def check_data_unused_token(db: Session):
     data = db.query(database.Token). \
         outerjoin(database.Worker, database.Worker.token_id == database.Token.id). \
         filter(database.Worker.id.is_(None)).all()
+    return data
+
+
+def update_last_activity_time(db: Session, worker_id: str):
+    data = db.query(database.Worker). \
+        filter(database.Worker.worker_id == worker_id). \
+        update({"last_activity": int(time.time())})
+    db.commit()
     return data
 
 
@@ -142,10 +156,17 @@ def create_token(rclone_token: str, client_id: str, client_secret: str,
 @app.post("/worker")
 def map_folder_token(item: Item, db: Session = Depends(get_db)):
     try:
-        add_f_t = add_new_worker(db=db, folder_id=item.folder_id, worker_id=item.worker_id, rclone_id=item.rclone_token_id)
+        add_f_t = add_new_worker(db=db, folder_id=item.folder_id, worker_id=item.worker_id,
+                                 rclone_id=item.rclone_token_id)
         return add_f_t
     except sqlalchemy.exc.IntegrityError as e:
         return {"status": False, "message": e}
+
+
+@app.put("/worker")
+def health_check(data: HealthCheck, db: Session = Depends(get_db)):
+    update_last_activity_time(db=db, worker_id=data.worker_id)
+    return {"status": True}
 
 
 if __name__ == "__main__":
