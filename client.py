@@ -63,3 +63,6 @@ def worker():
                 else:
                     print("Rclone-Folder queue empty")
                     time.sleep(60)
+        else:
+            time.sleep(60)
+            requests.put(f"{ENDPOINT}worker", json={'worker_id': WORKER_ID})
