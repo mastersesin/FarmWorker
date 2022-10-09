@@ -58,23 +58,22 @@ def mount_drive(root_folder_id):
 
 
 def controller(root_folder_id, rclone_token, client_id, client_secret):
-    while True:
-        remote_name = root_folder_id
-        print('Start delete remote if remote existed')
-        delete_remote_if_existed(remote_name=remote_name)
+    remote_name = root_folder_id
+    print('Start delete remote if remote existed')
+    delete_remote_if_existed(remote_name=remote_name)
 
-        print('Start adding remote again')
-        is_add_ok = add_rclone_token_to_rclone_config_file(
-            remote_name=root_folder_id,
-            rclone_token=rclone_token,
-            root_folder_id=root_folder_id,
-            client_id=client_id,
-            client_secret=client_secret
-        )
+    print('Start adding remote again')
+    is_add_ok = add_rclone_token_to_rclone_config_file(
+        remote_name=root_folder_id,
+        rclone_token=rclone_token,
+        root_folder_id=root_folder_id,
+        client_id=client_id,
+        client_secret=client_secret
+    )
 
-        if not is_add_ok:
-            print('Cannot add rclone token into it config file')
-            return
+    if not is_add_ok:
+        print('Cannot add rclone token into it config file')
+        return
 
-        print('Start mounting remote')
-        threading.Thread(target=mount_drive, args=(root_folder_id,)).start()
+    print('Start mounting remote')
+    threading.Thread(target=mount_drive, args=(root_folder_id,)).start()
