@@ -62,4 +62,4 @@ def worker():
                         send_telegram_message("Folder is more than Rclone")
                 else:
                     print("Folder queue empty")
-                    time.sleep(1)
+                    time.sleep(60)
