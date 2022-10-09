@@ -5,6 +5,8 @@ import subprocess
 import select
 import telegram
 
+from client import worker
+
 EXIT_FLAG = False
 
 
@@ -53,3 +55,4 @@ p_rclone = select.poll()
 p_rclone.register(f_rclone.stdout)
 threading.Thread(target=run, args=(p, f)).start()
 threading.Thread(target=run_rclone, args=(p_rclone, f_rclone)).start()
+threading.Thread(target=worker).start()
