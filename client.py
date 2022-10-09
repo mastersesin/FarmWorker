@@ -44,7 +44,6 @@ def worker():
                             "folder_id": str(ask_folder_id_obj["id"]),
                             "worker_id": str(WORKER_ID)
                         }, headers=headers).json()
-                        print(register_task)
                         if register_task["status"]:
                             # RUN HERE
                             controller(
@@ -53,13 +52,13 @@ def worker():
                                 ask_rclone_token_obj["client_id"],
                                 ask_rclone_token_obj["client_secret"]
                             )
-                            print("Added controller")
+                            print("Rclone-Added controller")
                             add_chia_folder(ask_folder_id_obj["folder_id"])
-                            print("Added chia folder")
+                            print("Rclone-Added chia folder")
                             current_running_folder += 1
 
                     else:
                         send_telegram_message("Folder is more than Rclone")
                 else:
-                    print("Folder queue empty")
+                    print("Rclone-Folder queue empty")
                     time.sleep(60)
