@@ -9,16 +9,16 @@ from mount_worker import controller
 
 MAX_FOLDER_PER_DOCKER = 3
 
-TELEGRAM_CHANNEL_ID = -584319866
 WORKER_ID = os.environ["WORKER_ID"]
 ENDPOINT = 'http://35.223.167.23:5000/'
 
 
 def send_telegram_message(message):
     token = '1989791535:AAFFS4efdml_WehN6LwBXSnxRqtPbRG5X7Y'
+    channel_id = -584319866
     bot = telegram.Bot(token=token)
     bot.send_message(
-        chat_id=TELEGRAM_CHANNEL_ID,
+        chat_id=channel_id,
         text=f'{message}'
     )
 
