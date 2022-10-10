@@ -18,6 +18,8 @@ database.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+MAX_TASK_PER_WORKER = 3
+
 
 class Item(BaseModel):
     rclone_token_id: str
@@ -105,6 +107,9 @@ def update_last_activity_time(db: Session, worker_id: str):
 
 
 def add_new_worker(db: Session, folder_id: str, rclone_id: str, worker_id: str):
+    worker_task_count = db.query(database.Worker).filter(database.Worker.worker_id == worker_id).count()
+    if worker_task_count >= MAX_TASK_PER_WORKER:
+        return {"status": False, "reason": f"Maximum task reached"}
     folder_obj = db.query(database.Folder).filter(database.Folder.id == folder_id).first()
     if not folder_obj:
         return {"status": False, "reason": f"Folder id {folder_id} not exist"}
