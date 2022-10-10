@@ -56,6 +56,8 @@ def worker():
                         add_chia_folder(ask_folder_id_obj["folder_id"])
                         print("Rclone-Added chia folder")
                         current_running_folder += 1
+                    else:
+                        print(f'Controller-{register_task["reason"]}')
 
                 else:
                     threading.Thread(target=send_telegram_message, args=("Folder is more than Rclone",)).start()
