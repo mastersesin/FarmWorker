@@ -1,5 +1,6 @@
 import json
 import os
+import threading
 import time
 
 import requests
@@ -58,7 +59,7 @@ def worker():
                             current_running_folder += 1
 
                     else:
-                        send_telegram_message("Folder is more than Rclone")
+                        threading.Thread(target=send_telegram_message, args=("Folder is more than Rclone",)).start()
                         time.sleep(60)
                 else:
                     print("Rclone-Folder queue empty")
