@@ -29,6 +29,16 @@ class HealthCheck(BaseModel):
     worker_id: str
 
 
+class PostFolder(BaseModel):
+    folder_id: str
+
+
+class PostToken(BaseModel):
+    rclone_token: str
+    client_id: str
+    client_secret: str
+
+
 def get_all_folder(db: Session):
     return db.query(database.Folder).all()
 
@@ -134,22 +144,22 @@ def read_tokens(db: Session = Depends(get_db)):
 
 
 @app.post("/folder")
-def create_folder(folder_id: str, db: Session = Depends(get_db)):
-    check_exist_folder = check_data_exist_folder(db=db, folder_id=folder_id)
+def create_folder(post_body: PostFolder, db: Session = Depends(get_db)):
+    check_exist_folder = check_data_exist_folder(db=db, folder_id=post_body.folder_id)
     if check_exist_folder:
-        return {f"Error: folder_id {folder_id} is exist!"}
-    data_data = create_Folder(db=db, folder_id=folder_id)
+        return {f"Error: folder_id {post_body.folder_id} is exist!"}
+    data_data = create_Folder(db=db, folder_id=post_body.folder_id)
     return data_data
 
 
 @app.post("/token")
-def create_token(rclone_token: str, client_id: str, client_secret: str,
-                 db: Session = Depends(get_db), response: Response = status.HTTP_201_CREATED):
-    check_exist_folder = check_data_exist_token(db=db, rclone_token=rclone_token)
+def create_token(post_body: PostToken, db: Session = Depends(get_db), response: Response = status.HTTP_201_CREATED):
+    check_exist_folder = check_data_exist_token(db=db, rclone_token=post_body.rclone_token)
     if check_exist_folder:
         response.status_code = status.HTTP_400_BAD_REQUEST
-        return {f"Error: rclone_token {rclone_token} is exist!"}
-    data = create_Token(db=db, rclone_token=rclone_token, client_id=client_id, client_secret=client_secret)
+        return {f"Error: rclone_token {post_body.rclone_token} is exist!"}
+    data = create_Token(db=db, rclone_token=post_body.rclone_token, client_id=post_body.client_id,
+                        client_secret=post_body.client_secret)
     return data
 
 
