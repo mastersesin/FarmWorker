@@ -12,8 +12,6 @@ RUN git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --re
 
 RUN cd chia-blockchain  && /bin/sh ./install.sh
 
-RUN chia-blockchain/venv/bin/chia init -c ca
-
 RUN python edit_plotting_and_config_file.py
 
 RUN sudo -v ; curl https://rclone.org/install.sh | sudo bash
