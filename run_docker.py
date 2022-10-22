@@ -9,4 +9,4 @@ for i in range(5):
                  f'--log-opt gcp-project=bright-seer-140205 ' \
                  f'--log-opt labels=worker_id --label worker_id={docker_id}:host_{i} ' \
                  f'--privileged -d farm-worker host_{i}'
-    subprocess.Popen(docker_cmd.split(' '))
+    subprocess.Popen(docker_cmd.split(' ')).wait()
