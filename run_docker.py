@@ -1,3 +1,8 @@
+# sudo mkdir -p /etc/systemd/system/docker.service.d
+# /etc/systemd/system/docker.service.d/docker-service-override.conf
+# [Service]
+# Environment="GOOGLE_APPLICATION_CREDENTIALS=/home/mastersesin12345/.config/gcloud/application_default_credentials.json"
+
 import subprocess
 
 project_name = subprocess.check_output('gcloud config get-value project'.split()).strip().decode()
