@@ -20,12 +20,7 @@ def run(process, obj):
             last_event_time = int(time.time())
         if process.poll(1):
             data = obj.stdout.readline().decode()
-            if 'harvester chia.harvester.harvester: ERROR' in data:
-                bot.send_message(
-                    chat_id=telegram_channel_id,
-                    text=f'{data}'
-                )
-            if 'harvester chia.harvester.harvester: INFO' in data or 'harvester chia.plotting.plot_tools: INFO' in data:
+            if 'INFO' in data:
                 last_event_time = int(time.time())
                 print(f"Harvester-{data.strip()}")
         time.sleep(0.01)
