@@ -4,6 +4,7 @@
 # Environment="GOOGLE_APPLICATION_CREDENTIALS=/home/mastersesin12345/.config/gcloud/application_default_credentials.json"
 
 import subprocess
+import time
 
 project_name = subprocess.check_output('gcloud config get-value project'.split()).strip().decode()
 instance_name = subprocess.check_output('hostname'.split()).strip().decode()
@@ -15,3 +16,4 @@ for i in range(5):
                  f'--log-opt labels=worker_id --label worker_id={docker_id}:host_{i} ' \
                  f'--privileged -d farm-worker host_{i}'
     subprocess.Popen(docker_cmd.split(' ')).wait()
+    time.sleep(5)
