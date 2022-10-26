@@ -10,7 +10,7 @@ from mount_worker import controller
 MAX_FOLDER_PER_DOCKER = 3
 
 WORKER_ID = os.environ["WORKER_ID"]
-ENDPOINT = 'http://35.223.167.23:5000/'
+ENDPOINT = 'http://35.193.2.6:5001/'
 
 
 def send_telegram_message(message):
